@@ -1,0 +1,458 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f8fafc;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.container {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+    position: relative;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.header > * {
+    position: relative;
+    z-index: 10;
+}
+
+.celebration {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.highlight {
+    color: #fde047;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    .subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+.benefits {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+.benefits p {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0.25rem 0;
+}
+
+/* Floating Icons */
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+.icon-1 {
+    top: 2.5rem;
+    left: 2.5rem;
+}
+
+.icon-2 {
+    top: 5rem;
+    right: 2.5rem;
+    animation-delay: 1s;
+}
+
+.icon-3 {
+    bottom: 8rem;
+    left: 1rem;
+    animation-delay: 2s;
+}
+
+.icon-4 {
+    bottom: 2rem;
+    right: 1rem;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(5deg); }
+    66% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+/* Downloads Section */
+.downloads-section {
+    padding: 3rem 1rem;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.downloads-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ec4899;
+    margin-bottom: 1rem;
+}
+
+.download-subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 60rem;
+    }
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #ec4899;
+}
+
+.recipe-card.downloading {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+.recipe-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-icon {
+    font-size: 2rem;
+}
+
+.recipe-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.recipe-description {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.recipe-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.recipe-potential {
+    color: #059669;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.difficulty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.difficulty-easy {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.difficulty-very-easy {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.difficulty-intermediate {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.download-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+}
+
+.download-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Tips Section */
+.tips-section {
+    background: white;
+    padding: 3rem 1rem;
+}
+
+.tips-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 2rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .tips-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.tip-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.tip-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tip-card p {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* Support Section */
+.support-section {
+    padding: 3rem 1rem;
+    text-align: center;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+.support-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ec4899;
+    margin-bottom: 2rem;
+}
+
+.support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #6b7280;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.support-btn:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+}
+
+.schedule {
+    margin-bottom: 2rem;
+}
+
+.schedule p {
+    color: #64748b;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #f59e0b;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.warning-icon {
+    color: #d97706;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.warning p {
+    color: #92400e;
+    font-size: 0.75rem;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.footer p {
+    opacity: 0.9;
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+}
+
+.copyright {
+    opacity: 0.75;
+    font-size: 0.75rem;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #059669;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.error {
+    background: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-icon {
+        display: none;
+    }
+    
+    .header {
+        padding: 2rem 1rem;
+    }
+    
+    .downloads-section,
+    .tips-section,
+    .support-section {
+        padding: 2rem 1rem;
+    }
+}
