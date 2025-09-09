@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confeitaria Lucrativa - Suas Apostilas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .container {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+            position: relative;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .header > * {
+            position: relative;
+            z-index: 10;
+        }
+
+        .celebration {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .highlight {
+            color: #fde047;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 768px) {
+            .subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .benefits {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1rem;
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
+        .benefits p {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        /* Downloads Section */
+        .downloads-section {
+            padding: 3rem 1rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        .downloads-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ec4899;
+            margin-bottom: 1rem;
+        }
+
+        .download-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .recipe-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 60rem;
+            }
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #ec4899;
+        }
+
+        .recipe-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-icon {
+            font-size: 2rem;
+        }
+
+        .recipe-info h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .recipe-description {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .recipe-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .recipe-potential {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .difficulty-easy {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .difficulty-very-easy {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .difficulty-intermediate {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .download-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Support Section */
+        .support-section {
+            padding: 3rem 1rem;
+            text-align: center;
+            max-width: 28rem;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .support-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ec4899;
+            margin-bottom: 2rem;
+        }
+
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .warning {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .warning p {
+            color: #92400e;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #059669;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="celebration">🎉</div>
+            <h1>
+                PARABÉNS! 🎊<br>
+                <span class="highlight">Sua Compra Foi Aprovada!</span>
+            </h1>
+            <p class="subtitle">
+                Você agora tem acesso às <strong>10 Apostilas Exclusivas</strong><br>
+                do Curso Confeitaria Lucrativa! 💰
+            </p>
+            <div class="benefits">
+                <p>✅ Acesso Vitalício Liberado</p>
+                <p>✅ Suporte Incluso</p>
+                <p>✅ Garantia de 7 Dias</p>
+            </div>
+            <div class="floating-icon icon-1">🧁</div>
+            <div class="floating-icon icon-2">🍰</div>
+            <div class="floating-icon icon-3">🍫</div>
+            <div class="floating-icon icon-4">🎂</div>
+        </div>
+
+        <!-- Downloads Section -->
+        <div class="downloads-section">
+            <h2>📥 Baixe Suas Apostilas Agora</h2>
+            <p class="download-subtitle">Clique nos cards abaixo para baixar cada apostila:</p>
+            
+            <div class="recipe-grid" id="recipeGrid">
+                <!-- Cards serão gerados via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h2>💡 Dicas Para Começar</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🏠</div>
+                    <h4>Comece de Casa</h4>
+                    <p>Inicie seu negócio na própria cozinha, sem grandes investimentos.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h4>Use as Redes Sociais</h4>
+                    <p>Poste fotos dos seus doces no Instagram e Facebook para atrair clientes.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🎯</div>
+                    <h4>Precifique Corretamente</h4>
+                    <p>Use as margens de lucro sugeridas nas apostilas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Section -->
+        <div class="support-section">
+            <h2>📧 Suporte</h2>
+            <a href="mailto:suporte@docesucesso.com" class="support-btn">
+                📧 Enviar E-mail
+            </a>
+            <div class="schedule">
+                <p><strong>Horário de Atendimento:</strong></p>
+                <p>Segunda a Sexta: 9h às 18h</p>
+                <p>Sábado: 9h às 14h</p>
+            </div>
+            
+            <div class="warning">
+                <div class="warning-icon">🔒</div>
+                <p><strong>Aviso Importante:</strong> Este link de acesso é pessoal e intransferível. O compartilhamento não autorizado é proibido e pode resultar no cancelamento do acesso.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>Confeitaria Lucrativa</h3>
+            <p>Transformando vidas através da confeitaria desde 2020</p>
+            <p class="copyright">© 2024 Doce Sucesso. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Dados das receitas
+        const recipes = [
+            {
+                id: "chantininho",
+                name: "Chantininho",
+                icon: "🧁",
+                description: "Receitas exclusivas para festas",
+                potential: "R$ 300-600/dia",
+                difficulty: "Fácil",
+                difficultyClass: "difficulty-easy",
+                filename: "chantininho.pdf"
+            },
+            {
+                id: "macarrons",
+                name: "Macarrons",
+                icon: "🌈",
+                description: "Segredo dos macarrons franceses",
+                potential: "R$ 400-800/dia",
+                difficulty: "Intermediário",
+                difficultyClass: "difficulty-intermediate",
+                filename: "macarrons.pdf"
+            },
+            {
+                id: "bem-casado",
+                name: "Bem Casado",
+                icon: "💍",
+                description: "Fature alto em casamentos",
+                potential: "R$ 500-1000/evento",
+                difficulty: "Fácil",
+                difficultyClass: "difficulty-easy",
+                filename: "bem-casado.pdf"
+            },
+            {
+                id: "pudim",
+                name: "Pudim",
+                icon: "🍮",
+                description: "Variações que conquistam",
+                potential: "R$ 200-400/dia",
+                difficulty: "Muito Fácil",
+                difficultyClass: "difficulty-very-easy",
+                filename: "pudim.pdf"
+            },
+            {
+                id: "donuts",
+                name: "Donuts",
+                icon: "🍩",
+                description: "Donuts artesanais",
+                potential: "R$ 350-700/dia",
+                difficulty: "Fácil",
+                difficultyClass: "difficulty-easy",
+                filename: "donuts.pdf"
+            },
+            {
+                id: "cupcake",
+                name: "Cupcake",
+                icon: "🧁",
+                description: "Cupcakes gourmet profissionais",
+                potential: "R$ 250-500/dia",
+                difficulty: "Fácil",
+                difficultyClass: "difficulty-easy",
+                filename: "cupcake.pdf"
+            },
+            {
+                id: "panetone-chocotone",
+                name: "Panetone & Chocotone",
+                icon: "🎄",
+                description: "Doces natalinos lucrativos",
+                potential: "R$ 800-2000/mês",
+                difficulty: "Intermediário",
+                difficultyClass: "difficulty-intermediate",
+                filename: "panetone-chocotone.pdf"
+            },
+            {
+                id: "bolos-caseiros",
+                name: "Bolos Caseiros",
+                icon: "🎂",
+                description: "Bolos irresistíveis",
+                potential: "R$ 400-800/dia",
+                difficulty: "Fácil",
+                difficultyClass: "difficulty-easy",
+                filename: "bolos-caseiros.pdf"
+            },
+            {
+                id: "brigadeiro-gourmet",
+                name: "Brigadeiro Gourmet",
+                icon: "🍫",
+                description: "Brigadeiros sofisticados",
+                potential: "R$ 300-900/dia",
+                difficulty: "Muito Fácil",
+                difficultyClass: "difficulty-very-easy",
+                filename: "brigadeiro-gourmet.pdf"
+            },
+            {
+                id: "pipoca-gourmet",
+                name: "Pipoca Gourmet",
+                icon: "🍿",
+                description: "Margem de lucro até 400%",
+                potential: "R$ 200-600/dia",
+                difficulty: "Muito Fácil",
+                difficultyClass: "difficulty-very-easy",
+                filename: "pipoca-gourmet.pdf"
+            }
+        ];
+
+        // Função para mostrar toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${isError ? 'error' : ''} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Função para fazer download
+        function downloadRecipe(filename, recipeName) {
+            try {
+                const link = document.createElement('a');
+                link.href = `pdfs/${filename}`;
+                link.download = filename;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showToast(`📥 Download de ${recipeName} iniciado!`);
+            } catch (error) {
+                console.error('Erro no download:', error);
+                showToast('❌ Erro no download. Tente novamente.', true);
+            }
+        }
+
+        // Função para criar card de receita
+        function createRecipeCard(recipe) {
+            return `
+                <div class="recipe-card">
+                    <div class="recipe-header">
+                        <div class="recipe-icon">${recipe.icon}</div>
+                        <div class="recipe-info">
+                            <h3>${recipe.name}</h3>
+                            <p class="recipe-description">${recipe.description}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-details">
+                        <div class="recipe-potential">${recipe.potential}</div>
+                        <div class="difficulty-badge ${recipe.difficultyClass}">
+                            ${recipe.difficulty}
+                        </div>
+                    </div>
+                    
+                    <button class="download-btn" onclick="downloadRecipe('${recipe.filename}', '${recipe.name}')">
+                        📥 Baixar Apostila
+                    </button>
+                </div>
+            `;
+        }
+
+        // Função para renderizar receitas
+        function renderRecipes() {
+            const grid = document.getElementById('recipeGrid');
+            if (grid) {
+                grid.innerHTML = recipes.map(recipe => createRecipeCard(recipe)).join('');
+            }
+        }
+
+        // Inicializar quando página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderRecipes();
+        });
+    </script>
+</body>
+</html>
